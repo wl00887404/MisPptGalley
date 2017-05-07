@@ -87,7 +87,8 @@ ctx.body = {
  */
 app.use(require('koa-static')(__dirname + "/public")).use(bodyParser({jsonLimit: "50mb"})).use(router.routes()).use(router.allowedMethods()).use(async(ctx, next) => {
     await next()
-    if (ctx.request.url.match(/^(\/|\/slide\/\d+|\/list|\/modify\/\d+|\/forceUpdate|\/broadcast\/.+)$/)) {
+	let p=ctx.request.url.split("?")[0]
+    if (p.match(/^(\/|\/slide\/\d+|\/list|\/modify\/\d+|\/forceUpdate|\/broadcast\/.+)$/)) {
         ctx.body = spa
     }
 })

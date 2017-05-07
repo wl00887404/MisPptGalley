@@ -7,14 +7,15 @@ import backIcon from './reply.png'
 class Slide extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showInformationCard: false
-        }
     }
     _toggleInformationCard() {
-        this.setState({
-            showInformationCard: !this.state.showInformationCard
-        })
+	if(window.location.search.match(/show=\d/)!==null){
+		this.props.history.goBack()
+	}
+	else{
+		this.props.history.push(`./${this.props.match.params.index}?show=1`)
+	}
+
     }
     _onButtonClick() {
         this.props.history.push('/list')
@@ -22,6 +23,7 @@ class Slide extends React.Component {
     render() {
         let {groups, dispatch, guest,} = this.props
         let index = parseInt(this.props.match.params.index)
+
         let group = groups[index - 1]
         if (group == undefined) {
             return (
@@ -39,12 +41,12 @@ class Slide extends React.Component {
             <div className={styles.container}>
                 <button onClick={this._onButtonClick.bind(this)} className={styles.backButton} type="button"><img src={backIcon}/></button>
                 <PPT src={ppt} dispatch={dispatch}/>
-                <div className={styles.block} style={this.state.showInformationCard
+                <div className={styles.block} style={window.location.search.match(/show=\d/)!==null
                     ? {}
                     : {
                         display: "none"
                     }} onClick={this._toggleInformationCard.bind(this)}></div>
-                <InformationCard group={group} index={index} show={this.state.showInformationCard} toggle={this._toggleInformationCard.bind(this)} guest={guest}/>
+                <InformationCard group={group} index={index} show={window.location.search.match(/show=\d/)!==null} toggle={this._toggleInformationCard.bind(this)} guest={guest}/>
             </div>
         )
     }
@@ -62,7 +64,7 @@ class PPT extends React.Component {
         if (src == "") {
             ppt = "找不到簡報檔案"
         } else if (src.match(/.pdf$/)) {
-            ppt = (<iframe src={`../reveal.js/index.html?pdfPath=${src}`}/>)
+            ppt = (<iframe src={`/reveal.js/index.html?pdfPath=${src}`}/>)
         } else {
             ppt = (<iframe src={src}/>)
         }

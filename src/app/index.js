@@ -24,6 +24,12 @@ io.on('addCommit', (msg) => {
     store.dispatch(showStatus(msg,"",5000))
 })
 
+window.broadcast=(msg)=>{
+	fetch(`/broadcast/${msg}`)
+}
+window.forceUpdate=(msg)=>{
+	fetch(`/forceUpdate`)
+}
 export default class App extends React.Component {
     constructor(props) {
         super(props);
