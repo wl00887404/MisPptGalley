@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#91dc5a" />
+	<link rel="shortcut icon" type="image/x-icon" href="/asset/favicon.ico">
+	<title>中正資管專題簡報</title>
+</head>
+
+<body>
+	<div id="root">
+	</div>
+	<script type="text/javascript" src="/bundle.js"></script>
+	<script type="text/javascript" src="/konami.js"></script>
+	<script type="text/javascript">
+		var easter_egg = new Konami(()=>{
+			let index=prompt("想去哪？")
+			if(index){
+				window.location=`${window.location.origin}/modify/${index}`
+			}
+		});
+		easter_egg.pattern="67678577738313"
+	</script>
+</body>
+
+</html>
