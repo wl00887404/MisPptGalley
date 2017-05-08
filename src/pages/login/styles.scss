@@ -1,5 +1,4 @@
 :local(.container) {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,10 +7,12 @@
     padding-right: 1em;
     padding-left: 1em;
     color: white;
-
+    @media (max-width: 760px) {
+        font-size: 0.75em;
+    }
     :local(.banner) {
         //position: absolute;
-        position:fixed;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -19,7 +20,6 @@
         overflow: hidden;
         z-index: -1;
         background-color: rgba(0, 0, 0, 1);
-
         video {
             position: absolute;
             top: 50%;
@@ -27,7 +27,6 @@
             transform: translate(-50%, -50%);
             z-index: -1;
         }
-
         div {
             position: absolute;
             z-index: 1;
@@ -40,7 +39,6 @@
         }
         //height:100vh;
     }
-
     :local(.title) {
         display: flex;
         width: 10em;
@@ -48,32 +46,27 @@
         flex-direction: column;
         align-items: center;
         font-size: 2.5em;
-        @media (max-width:350px) {
+        @media (max-width: 350px) {
             font-size: 2em;
         }
         margin-bottom: 0.2em;
-
         & > * {
             margin-bottom: 0.2em;
         }
-
         :local(.logo) {
             width: 6em;
             margin-bottom: 0.5em;
         }
-
         :local(.letterSpacing) {
             width: 100%;
             display: flex;
             justify-content: space-between;
         }
     }
-
     :local(.guest) {
         font-size: 2.2em;
         display: flex;
         border-bottom: 1px white solid;
-
         input {
             color: #91dc5a;
             background-color: transparent;
@@ -82,7 +75,6 @@
             padding: 0.5em;
             width: 70%;
         }
-
         button {
             width: 30%;
             font-size: 1em;

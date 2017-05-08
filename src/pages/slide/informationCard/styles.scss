@@ -5,9 +5,12 @@
     top: 0;
     right: 0;
     z-index: 50;
-
+    @media (max-width: 760px) {
+        font-size: 0.75em;
+    }
     :local(.icon) {
         position: absolute;
+        font-size: 1rem;
         z-index: 1;
         top: 0.5em;
         right: 0.5em;
@@ -18,17 +21,15 @@
         align-items: center;
         border-radius: 50%;
         cursor: pointer;
-
         & > img {
             width: 2em;
             height: 2em;
         }
     }
-
     :local(.data) {
-        background-color: rgba(0,0,0,.87);
+        background-color: rgba(0, 0, 0, .87);
         color: white;
-        box-shadow: 0 0 10px 0 rgba(0,0,0,1);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
         padding: 3.5em 1em 2em;
         position: absolute;
         top: 0;
@@ -39,12 +40,10 @@
         transition: transform 0.5s;
         display: flex;
         flex-direction: column;
-
         :local(.index) {
             font-size: 2.5em;
             min-height: 1em;
         }
-
         :local(.h1) {
             font-size: 2em;
             min-height: 1em;
@@ -53,27 +52,22 @@
             flex-wrap: wrap;
             margin-bottom: 0.5em;
         }
-
         :local(.detail) {
             & > div {
                 font-size: 1.2em;
                 margin-bottom: 1em;
                 display: flex;
                 align-items: center;
-
                 &:last-child {
                     margin-bottom: 0;
                 }
-
                 & > span {
                     display: block;
                     font-size: 1em;
                 }
-
                 :local(.th) {
                     min-width: 5em;
                 }
-
                 :local(.td) {
                     flex-grow: 1;
                 }
@@ -82,15 +76,12 @@
             padding-bottom: 2em;
             border-bottom: 1px white solid;
         }
-
         :local(.commits) {
             font-size: 1.2em;
-
             :local(.noCommits) {
                 color: white;
                 text-align: center;
             }
-
             :local(.commit) {
                 animation: toOpacity100 0.5s forwards;
                 & > div {
@@ -98,18 +89,15 @@
                     align-items: flex-end;
                     margin-bottom: 0.5em;
                 }
-
                 :local(.who) {
                     font-size: 1em;
                     margin-right: 0.5em;
                     font-weight: 900;
                 }
-
                 :local(.when) {
                     font-size: 0.8em;
                     opacity: 0.87;
                 }
-
                 :local(.what) {
                     font-size: 1em;
                     line-height: 1.2;
@@ -117,7 +105,6 @@
                 margin-bottom: 1em;
             }
         }
-
         :local(.submitContainer) {
             margin-top: 1em;
             display: flex;
@@ -125,13 +112,11 @@
             font-size: 1.2em;
             min-height: 2em;
             border-bottom: 1px white solid;
-
             & > div {
                 display: flex;
                 align-items: flex-end;
                 flex-grow: 1;
             }
-
             input[type*=text] {
                 font-size: 1em;
                 height: 2em;
@@ -141,13 +126,13 @@
                 border: none;
                 flex-grow: 1;
             }
-
             button {
                 font-size: 1em;
                 background-color: transparent;
-                color: rgb(0,210,255);
+                color: rgb(0, 210, 255);
                 cursor: pointer;
                 height: 2em;
+                min-width: 3.5em;
                 padding-left: 0.75em;
                 padding-right: 0.75em;
                 border: none;
