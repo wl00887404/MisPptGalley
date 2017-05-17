@@ -1,9 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 const http = require('http')
-// const https = require('https')
-// const key = fs.readFileSync('ssl/privatekey.pem', 'utf8')
-// const cert = fs.readFileSync('ssl/certificate.pem', 'utf8')
+const https = require('https')
+const key = fs.readFileSync('./key/key.pem', 'utf8')
+const cert = fs.readFileSync('./key/crt.pem', 'utf8')
 const Koa = require('koa')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser');
@@ -15,10 +15,10 @@ let groupsPath = path.resolve(__dirname, "./src/data/groups.json")
 let app = new Koa()
 const router = new Router()
 let httpServer = http.createServer(app.callback())
-// let httpsServer = https.createServer({
-//     key,
-//     cert,
-// }, app.callback())
+let httpsServer = https.createServer({
+    key: key,
+    cert: cert,
+}, app.callback())
 
 let io = require('socket.io')(httpServer)
 io.on('connection', (socket) => {})
@@ -94,6 +94,6 @@ app.use(require('koa-static')(__dirname + "/public")).use(bodyParser({jsonLimit:
 })
 
 httpServer.listen(3000)
-// httpsServer.listen(3001)
+httpsServer.listen(3001)
 console.log("http://127.0.0.1:3000")
 // console.log("https://127.0.0.1:3001")

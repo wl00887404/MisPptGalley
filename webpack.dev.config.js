@@ -3,15 +3,18 @@ const webpack = require('webpack')
 
 module.exports = {
     context: path.resolve(__dirname, './src'),
-    entry: [
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './index.dev.js',
-    ],
+    entry: {
+        "main": [
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:8080',
+            'webpack/hot/only-dev-server',
+            './index.dev.js',
+        ],
+        "reveal.pdf": './reveal.pdf.js'
+    },
     output: {
         path: path.resolve(__dirname, './public/'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/'
     },
     module: {
@@ -40,7 +43,7 @@ module.exports = {
                 'sass-loader',
             ]
         }, {
-            test: /\.(png|mp4)$/,
+            test: /\.(png|mp4|webm)$/,
             use: [
                 'file-loader?name=[name].[ext]&outputPath=asset/'
             ]

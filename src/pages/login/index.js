@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './styles.scss'
 import logo from './logo.png'
-import banner from './We-Work-We-Wait.mp4'
+import bannerMp4 from './We-Work-We-Wait.mp4'
+import bannerWebm from './We-Work-We-Wait.webm'
 import enter from './enter-arrow.png'
 import {connect} from 'react-redux'
 import {showStatus} from '../../action.js'
@@ -76,7 +77,10 @@ class Login extends React.Component {
             <div className={styles.container}>
                 <div className={styles.banner}>
                     <div/>
-                    <video autoPlay={true} loop={true} src={banner}/>
+                    <video autoPlay={true} loop={true} >
+                        <source src={bannerMp4} type="video/mp4"></source>
+                        <source src={bannerWebm} type="video/webm"></source>
+                    </video>
                 </div>
                 <div className={styles.title}>
                     <div>
